@@ -6,7 +6,9 @@ install:
 
 test:
     python -m pytest -vv --cov=myapplib tests/*.py
-    #PYTHONPATH=. && py.test --nbval-lax notebooks/*.ipynb
+    python -m pytest --nbval noebook.ipynb
 
 lint:
-    pylint --disable=R.C myapplib
+    pylint --disable=R,C myapplib cli web
+
+all: install lint test
